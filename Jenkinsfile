@@ -4,8 +4,9 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Checkout the code from your Git repository
-                git 'https://github.com/wasAmesha/DevOps_App'
+                retry(3) {
+                    git branch: 'main', url: 'https://github.com/HGSChandeepa/test-node'
+                }
             }
         }
         stage('Build Docker Image') {
